@@ -1,0 +1,74 @@
+﻿@model app.truck.com.Models.InspectionModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="col-lg-5">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
+<div class="col-lg-7 text-right">
+    @if (Model.years == null && Model.weeks == null)
+    {
+        <h2>Last Week Amounts:</h2> <h2><strong> @ViewBag.WeeklyAmount.ToString("N2")</strong> $</h2>
+    }
+    @if (Model.years != null && Model.weeks != null)
+    {
+        <h2>Amounts By Filter Week </h2>  <h2><strong> @ViewBag.WeeklyAmount.ToString("N2") </strong> $</h2>
+    }
+</div>
+
+
+@using (Html.BeginForm("Index", "Inspection", FormMethod.Post))
+{
+<div class="col-lg-2">
+    @Html.DropDownListFor(d => d.years, (IEnumerable<SelectListItem>)ViewBag.YearList, "Select", new { @class = "form-control required" })
+
+</div>
+<div class="col-lg-2">
+    @Html.DropDownListFor(d => d.weeks, (IEnumerable<SelectListItem>)ViewBag.WeekList, "Select", new { @class = "form-control required" })
+
+</div>
+<div class="col-lg-1">
+    <input type="submit" value="Filter" class="btn btn-primary form-control " />
+
+</div>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inspections.FirstOrDefault().InspectionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inspections.FirstOrDefault().Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inspections.FirstOrDefault().Truck.PlateNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Inspections)
+    {
+        <tr>
+            <td>
+           @item.InspectionDate.ToString("dd-MM-yyy HH:mm")    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Truck.PlateNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.InspectionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.InspectionID })
+            </td>
+        </tr>
+    }
+
+</table>

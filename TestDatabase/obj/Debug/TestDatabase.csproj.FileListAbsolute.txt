@@ -1,0 +1,15 @@
+D:\PROJELER\Truck\TestDatabase\bin\Debug\TestDatabase.exe.config
+D:\PROJELER\Truck\TestDatabase\bin\Debug\TestDatabase.exe
+D:\PROJELER\Truck\TestDatabase\bin\Debug\TestDatabase.pdb
+D:\PROJELER\Truck\TestDatabase\bin\Debug\EntityFramework.dll
+D:\PROJELER\Truck\TestDatabase\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJELER\Truck\TestDatabase\bin\Debug\Truck.Core.dll
+D:\PROJELER\Truck\TestDatabase\bin\Debug\Truck.Core.pdb
+D:\PROJELER\Truck\TestDatabase\bin\Debug\Truck.Core.dll.config
+D:\PROJELER\Truck\TestDatabase\bin\Debug\EntityFramework.xml
+D:\PROJELER\Truck\TestDatabase\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJELER\Truck\TestDatabase\obj\Debug\TestDatabase.csprojAssemblyReference.cache
+D:\PROJELER\Truck\TestDatabase\obj\Debug\TestDatabase.csproj.CoreCompileInputs.cache
+D:\PROJELER\Truck\TestDatabase\obj\Debug\TestDatabase.csproj.CopyComplete
+D:\PROJELER\Truck\TestDatabase\obj\Debug\TestDatabase.exe
+D:\PROJELER\Truck\TestDatabase\obj\Debug\TestDatabase.pdb

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Truck.Core.Model.Truck>
+@{
+    Truck.Data.Entities.TruckRepository truckRepository = new Truck.Data.Entities.TruckRepository();
+    var data = truckRepository.GetAll();
+}
+
+<h2>Add New Truck</h2>
+<form id="AddNewTruck" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="TruckID" id="TruckID" />
+    <label>Plate Number</label><br />
+    <input id="PlateNumber" name="PlateNumber" class="form-control" placeholder="Plate Number" /><br />
+
+    <label>Process Time</label>
+    <input id="ProcessTime" name="ProcessTime" type="datetime-local" class="form-control" placeholder="Process Time" /><br />
+    <label>Statüs</label>
+    <input data-val="true" class="form-control"
+           data-val-required="The isNewlyEnrolled field is required."
+           id="Status"
+           name="Status"
+           type="checkbox"
+           value="true" />
+    <input name="Status" type="hidden" value="false" />
+<br />
+    <input type="submit" value="KAYDET" class="btn btn-danger" />
+</form>
+<br />
+@Html.ActionLink("Back To List", "Index") |
+<br />
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script language="JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script src="~/Scripts/ajaxsc/trucks.js"></script>

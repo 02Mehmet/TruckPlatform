@@ -1,0 +1,30 @@
+﻿@model Truck.Core.Model.Inspection
+
+@{
+    ViewBag.Title = "AddNewInspection";
+}
+
+<h2>Add New Inspection</h2>
+<form id="AddNewInspection" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="InspectionID" id="InspectionID" />
+    <label>Plate Number</label><br />
+    <input id="PlateNumber" name="PlateNumber" class="form-control" placeholder="Plate Number" /><br />
+
+    <input data-val="true"
+           data-val-required="The isNewlyEnrolled field is required."
+           id="Status"
+           name="Status"
+           type="checkbox"
+           value="true" />
+
+    <input name="Status" type="hidden" value="false" />
+    <br />
+    <label>Process Time</label><br />
+    <input id="ProcessTime" name="ProcessTime" type="datetime-local" class="form-control" placeholder="Process Time" /><br />
+
+    <input type="submit" value="KAYDET" class="btn btn-danger" />
+</form>
+<br />
+@Html.ActionLink("Back To List", "Index") |
+<br />
+

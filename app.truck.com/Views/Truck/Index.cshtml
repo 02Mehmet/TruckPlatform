@@ -1,0 +1,63 @@
+﻿@model app.truck.com.Models.TruckModel
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Truck Log</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddNewTruck")
+</p>
+
+@using (Html.BeginForm("Index", "Truck", FormMethod.Post))
+{
+<div class="col-lg-2">
+    @Html.DropDownListFor(d => d.years, (IEnumerable<SelectListItem>)ViewBag.YearList, "Select", new { @class = "form-control required" })
+
+</div>
+<div class="col-lg-2">
+    @Html.DropDownListFor(d => d.weeks, (IEnumerable<SelectListItem>)ViewBag.WeekList, "Select", new { @class = "form-control required" })
+
+</div>
+<div class="col-lg-1">
+    <input type="submit" value="Filter" class="btn btn-primary form-control" />
+
+</div>
+
+}
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks.FirstOrDefault().PlateNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks.FirstOrDefault().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks.FirstOrDefault().ProcessTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Trucks)
+    {
+        <tr>
+            <td>
+               @item.PlateNumber
+            </td>
+            <td>
+                <span class="badge badge-@(item.Status==true ? "success":"danger")">@(item.Status == true ? "İçeride" : "Dışarıda")</span>
+            </td>
+            <td>
+                @item.ProcessTime.ToString("dd-MM-yyyy HH:mm")
+              
+            </td>
+            <td >
+                @Html.ActionLink("Details", "Details", new { id = item.TruckID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TruckID })
+            </td>
+        </tr>
+    }
+
+</table>

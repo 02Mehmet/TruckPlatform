@@ -1,0 +1,15 @@
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Data.Contracts.dll.config
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Data.Contracts.dll
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Data.Contracts.pdb
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\EntityFramework.dll
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Core.dll
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Core.pdb
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\Truck.Core.dll.config
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\EntityFramework.xml
+D:\PROJELER\Truck\Truck.Data.Contracts\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJELER\Truck\Truck.Data.Contracts\obj\Debug\Truck.Data.Contracts.csprojAssemblyReference.cache
+D:\PROJELER\Truck\Truck.Data.Contracts\obj\Debug\Truck.Data.Contracts.csproj.CoreCompileInputs.cache
+D:\PROJELER\Truck\Truck.Data.Contracts\obj\Debug\Truck.Data.Contracts.csproj.CopyComplete
+D:\PROJELER\Truck\Truck.Data.Contracts\obj\Debug\Truck.Data.Contracts.dll
+D:\PROJELER\Truck\Truck.Data.Contracts\obj\Debug\Truck.Data.Contracts.pdb

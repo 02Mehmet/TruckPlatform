@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Truck.Core.Context;
+using Truck.Core.Model;
+
+namespace Truck.Data.Entities
+{
+    public class InspectionUtility
+    {
+        private DBContext _dBContext = new DBContext();
+
+        public Dictionary<int,Inspection> FilterByYearAndWeek(int year, int week)
+        {
+            return _dBContext.Inspections.Where(a => a.InspectionDate.Year == year && a.Week == week).ToDictionary(x => x.InspectionID, y => y);
+        }
+
+        public Dictionary<int,Inspection> FilterByYear(int year)
+        {
+            return _dBContext.Inspections.Where(a => a.InspectionDate.Year == year).ToDictionary(x => x.InspectionID, y => y);
+        }
+
+        public Dictionary<int,Inspection> FilterByWeek(int week)
+        {
+            return _dBContext.Inspections.Where(a => a.Week == week).ToDictionary(x => x.InspectionID, y => y);
+        }
+
+        public Dictionary<int,Inspection> FilterDefault(int year, int week)
+        {
+            return _dBContext.Inspections.Where(a => a.InspectionDate.Year == year && a.Week == week).ToDictionary(x => x.InspectionID, y => y);
+        }
+
+        public Dictionary<int, Inspection> FilterByPlateNumber(int year, int week,string plateNumber)
+        {
+            return _dBContext.Inspections.Where(a => a.InspectionDate.Year == year && a.Week == week && a.Truck.PlateNumber == plateNumber).ToDictionary(x => x.InspectionID, y => y);
+        }
+    }
+}
