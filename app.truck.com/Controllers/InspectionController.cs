@@ -49,9 +49,8 @@ namespace app.truck.com.Controllers
             }
             if (year == null && week != null)
             {
-                var filterByWeek = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(week)).Values;
-                inspectionModel.Inspections = filterByWeek;
+                TempData["Message"] = "You can not send filter just only use week, please select year also";
+                return RedirectToAction("Messages", "Inspection");
             }
             if (year == null && week == null)
             {
@@ -92,9 +91,11 @@ namespace app.truck.com.Controllers
             }
             if (year == null && week != null)
             {
-                var filterByWeek = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(week)).Values;
-                inspectionModel.Inspections = filterByWeek;
+                //var filterByWeek = inspectionUtility.
+                //    FilterByYear(Convert.ToInt32(week)).Values;
+                //inspectionModel.Inspections = filterByWeek;
+                TempData["Message"] = "You can not send filter just only use week, please select year also";
+                return RedirectToAction("Messages", "Inspection");
             }
             if (year == null && week == null)
             {
