@@ -62,6 +62,10 @@
       <Project>{c2a48735-3cf7-4bff-afed-b67c16c65541}</Project>
       <Name>Truck.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Truck.Data.Entities\Truck.Data.Entities.csproj">
+      <Project>{3F96F876-68DD-45F7-A31D-26DEEA59B3BF}</Project>
+      <Name>Truck.Data.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

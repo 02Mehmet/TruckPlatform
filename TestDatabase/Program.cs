@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Truck.Core.Context;
+using Truck.Data.Entities;
 
 namespace TestDatabase
 {
@@ -12,7 +13,9 @@ namespace TestDatabase
         static void Main(string[] args)
         {
             DBContext dBContext = new DBContext();
-            var data = dBContext.Trucks.ToList();
+            InspectionUtility inspectionUtility = new InspectionUtility();
+            var data = inspectionUtility.
+                FilterByPlateNumber(DateTime.Now.Year, 33, "12CB45");
         }
     }
 }

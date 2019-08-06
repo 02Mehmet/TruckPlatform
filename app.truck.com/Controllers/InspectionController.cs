@@ -122,12 +122,20 @@ namespace app.truck.com.Controllers
             inspection.Amount = 50;
             inspection.Week = commonUtility.
                 GetWeekNumber(inspection.InspectionDate);
-            //var data = inspectionUtility.
-            //    FilterByPlateNumber(inspection.InspectionDate.Year, inspection.Week, inspection.Truck.PlateNumber);
-            if (ModelState.IsValid)
+            var data = inspectionUtility.
+                FilterByPlateNumber(inspection.InspectionDate.Year, inspection.Week, inspection.Truck.PlateNumber);
+            if (data.Count() == 0)
             {
-                inspectionRepository.Add(inspection);
-                return RedirectToAction("Index", "Inspection");
+                if (ModelState.IsValid)
+                {
+                    inspectionRepository.Add(inspection);
+                    return RedirectToAction("Index", "Inspection");
+                }
+            }
+            else
+            {
+                TempData["Message"] = "Please try with another Plate , because this truck has already inspection for this week";
+                return RedirectToAction("Messages", "Inspection");
             }
 
             return View(inspection);
@@ -160,6 +168,11 @@ namespace app.truck.com.Controllers
                 return HttpNotFound();
             }
             return View(data);
+        }
+
+        public ActionResult Messages()
+        {
+            return View();
         }
     }
 }
