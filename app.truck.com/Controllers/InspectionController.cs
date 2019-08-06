@@ -37,20 +37,20 @@ namespace app.truck.com.Controllers
             if (year != null && week != null)
             {
                 var filterByYearAndWeek = inspectionUtility.
-                    FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
+                    FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week));
                 ViewBag.WeeklyAmount = filterByYearAndWeek.Sum(w => w.Amount);
                 inspectionModel.Inspections = filterByYearAndWeek;
             }
             if (year != null && week == null)
             {
                 var filterByYear = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(year)).Values;
+                    FilterByYear(Convert.ToInt32(year));
                 inspectionModel.Inspections = filterByYear;
             }
             if (year == null && week != null)
             {
                 var filterByWeek = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(week)).Values;
+                    FilterByYear(Convert.ToInt32(week));
                 inspectionModel.Inspections = filterByWeek;
             }
             if (year == null && week == null)
@@ -58,7 +58,7 @@ namespace app.truck.com.Controllers
                 year = Convert.ToString(DateTime.Now.Year);
                 week = Convert.ToString(commonUtility.GetWeekNumber(DateTime.Now));
                 var filterByYearAndWeek = inspectionUtility.
-                    FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
+                    FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week));
                 ViewBag.WeeklyAmount = filterByYearAndWeek.Sum(w => w.Amount);
                 inspectionModel.Inspections = filterByYearAndWeek;
             }
@@ -76,24 +76,24 @@ namespace app.truck.com.Controllers
             ViewBag.WeekList = commonUtility.Weeks();
 
             var data = inspectionRepository.GetAll();
-           
+
             if (year != null && week != null)
             {
                 var filterByYearAndWeek = inspectionUtility.
-                    FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
+                    FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week));
                 ViewBag.WeeklyAmount = filterByYearAndWeek.Sum(w => w.Amount);
                 inspectionModel.Inspections = filterByYearAndWeek;
             }
             if (year != null && week == null)
             {
                 var filterByYear = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(year)).Values;
+                    FilterByYear(Convert.ToInt32(year));
                 inspectionModel.Inspections = filterByYear;
             }
             if (year == null && week != null)
             {
                 var filterByWeek = inspectionUtility.
-                    FilterByYear(Convert.ToInt32(week)).Values;
+                    FilterByYear(Convert.ToInt32(week));
                 inspectionModel.Inspections = filterByWeek;
             }
             if (year == null && week == null)
@@ -101,7 +101,7 @@ namespace app.truck.com.Controllers
                 year = Convert.ToString(DateTime.Now.Year);
                 week = Convert.ToString(commonUtility.GetWeekNumber(DateTime.Now));
                 var filterByYearAndWeek = inspectionUtility.
-                    FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
+                    FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week));
                 ViewBag.WeeklyAmount = filterByYearAndWeek.Sum(w => w.Amount);
                 inspectionModel.Inspections = filterByYearAndWeek;
             }
@@ -122,16 +122,14 @@ namespace app.truck.com.Controllers
             inspection.Amount = 50;
             inspection.Week = commonUtility.
                 GetWeekNumber(inspection.InspectionDate);
-            var data = inspectionUtility.
-                FilterByPlateNumber(inspection.InspectionDate.Year, inspection.Week, inspection.Truck.PlateNumber);
-            if(data==null)
+            //var data = inspectionUtility.
+            //    FilterByPlateNumber(inspection.InspectionDate.Year, inspection.Week, inspection.Truck.PlateNumber);
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    inspectionRepository.Add(inspection);
-                    return RedirectToAction("Index", "Inspection");
-                }
+                inspectionRepository.Add(inspection);
+                return RedirectToAction("Index", "Inspection");
             }
+
             return View(inspection);
         }
 
