@@ -32,24 +32,24 @@ namespace app.truck.com.Controllers
     
             if (year != null && week != null)
             {
-                var filterByYearAndWeek = utility.FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week));
+                var filterByYearAndWeek = utility.FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByYearAndWeek;
             }
             if (year != null && week == null)
             {
-                var filterByYear = utility.FilterByYear(Convert.ToInt32(year));
+                var filterByYear = utility.FilterByYear(Convert.ToInt32(year)).Values;
                 truckModel.Trucks = filterByYear;
             }
             if (year == null && week != null)
             {
-                var filterByWeek = utility.FilterByYear(Convert.ToInt32(week));
+                var filterByWeek = utility.FilterByYear(Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByWeek;
             }
             if (year == null && week == null)
             {
                 year = Convert.ToString(DateTime.Now.Year);
                 week = Convert.ToString(commonUtility.GetWeekNumber(DateTime.Now));
-                var filterByDefault = utility.FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week));
+                var filterByDefault = utility.FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByDefault;
             }
             return View(truckModel);
@@ -69,24 +69,24 @@ namespace app.truck.com.Controllers
 
             if (year != null && week != null)
             {
-                var filterByYearAndWeek = utility.FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week));
+                var filterByYearAndWeek = utility.FilterByYearAndWeek(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByYearAndWeek;
             }
             if (year != null && week == null)
             {
-                var filterByYear = utility.FilterByYear(Convert.ToInt32(year));
+                var filterByYear = utility.FilterByYear(Convert.ToInt32(year)).Values;
                 truckModel.Trucks = filterByYear;
             }
             if (year == null && week != null)
             {
-                var filterByWeek = utility.FilterByYear(Convert.ToInt32(week));
+                var filterByWeek = utility.FilterByYear(Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByWeek;
             }
             if (year == null && week == null)
             {
                 year = Convert.ToString(DateTime.Now.Year);
                 week = Convert.ToString(commonUtility.GetWeekNumber(DateTime.Now));
-                var filterByYearAndWeek = utility.FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week));
+                var filterByYearAndWeek = utility.FilterDefault(Convert.ToInt32(year), Convert.ToInt32(week)).Values;
                 truckModel.Trucks = filterByYearAndWeek;
             }
 

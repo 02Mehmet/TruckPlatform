@@ -14,39 +14,45 @@ namespace Truck.Data.Entities
     {
         private DBContext _dBContext = new DBContext();
 
-        public IEnumerable<Inspection> FilterByYearAndWeek(int year, int week)
-        {
-            return _dBContext.Inspections.
-                Where(a => a.InspectionDate.Year == year && a.Week == week);
-        }
-
-        //public Dictionary<int, Inspection> FilterByYearAndWeek(int year, int week)
+        //public IEnumerable<Inspection> FilterByYearAndWeek(int year, int week)
         //{
-        //    return _dBContext.Inspections.Where(a => a.InspectionDate.Year == year && a.Week == week).ToDictionary(x => x.InspectionID, y => y);
+        //    return _dBContext.Inspections.
+        //        Where(a => a.InspectionDate.Year == year && a.Week == week);
         //}
 
-        public IEnumerable<Inspection> FilterByYear(int year)
+        public Dictionary<int, Inspection> FilterByYearAndWeek(int year, int week)
         {
             return _dBContext.Inspections.
-                Where(a => a.InspectionDate.Year == year);
+                Where(a => a.InspectionDate.Year == year && a.Week == week).
+                ToDictionary(x => x.InspectionID, y => y);
         }
 
-        public IEnumerable<Inspection> FilterByWeek(int week)
+        public Dictionary<int,Inspection> FilterByYear(int year)
         {
             return _dBContext.Inspections.
-                Where(a => a.Week == week);
+                Where(a => a.InspectionDate.Year == year).
+                ToDictionary(x => x.InspectionID, y => y);
         }
 
-        public IEnumerable<Inspection> FilterDefault(int year, int week)
+        public Dictionary<int,Inspection> FilterByWeek(int week)
         {
             return _dBContext.Inspections.
-                Where(a => a.InspectionDate.Year == year && a.Week == week);
+                Where(a => a.Week == week).
+                ToDictionary(x => x.InspectionID, y => y);
         }
 
-        public IEnumerable<Inspection> FilterByPlateNumber(int year, int week, string plateNumber)
+        public Dictionary<int,Inspection> FilterDefault(int year, int week)
         {
             return _dBContext.Inspections.
-                Where(a => a.InspectionDate.Year == year && a.Week == week && a.Truck.PlateNumber == plateNumber);
+                Where(a => a.InspectionDate.Year == year && a.Week == week).
+                ToDictionary(x => x.InspectionID, y => y);
+        }
+
+        public Dictionary<int,Inspection> FilterByPlateNumber(int year, int week, string plateNumber)
+        {
+            return _dBContext.Inspections.
+                Where(a => a.InspectionDate.Year == year && a.Week == week && a.Truck.PlateNumber == plateNumber).
+                ToDictionary(x => x.InspectionID, y => y);
         }
     }
 }

@@ -12,28 +12,28 @@ namespace Truck.Data.Entities
     {
         private DBContext _dBContext = new DBContext();
 
-        public IEnumerable<Core.Model.Truck> FilterByYearAndWeek(int year, int week)
+        public Dictionary<int,Core.Model.Truck> FilterByYearAndWeek(int year, int week)
         {
             return _dBContext.Trucks.
-                Where(a => a.ProcessTime.Year == year && a.Week == week);
+                Where(a => a.ProcessTime.Year == year && a.Week == week).ToDictionary(x => x.TruckID, y => y);
         }
 
-        public IEnumerable<Core.Model.Truck> FilterByYear(int year)
+        public Dictionary<int,Core.Model.Truck> FilterByYear(int year)
         {
             return _dBContext.Trucks.
-                Where(a => a.ProcessTime.Year == year);
+                Where(a => a.ProcessTime.Year == year).ToDictionary(x => x.TruckID, y => y);
         }
 
-        public IEnumerable<Core.Model.Truck> FilterByWeek(int week)
+        public Dictionary<int,Core.Model.Truck> FilterByWeek(int week)
         {
             return _dBContext.Trucks.
-                Where(a => a.Week == week);
+                Where(a => a.Week == week).ToDictionary(x => x.TruckID, y => y);
         }
 
-        public IEnumerable<Truck.Core.Model.Truck> FilterDefault(int year, int week)
+        public Dictionary<int,Truck.Core.Model.Truck> FilterDefault(int year, int week)
         {                      
             return _dBContext.Trucks.
-                Where(a => a.ProcessTime.Year == year && a.Week == week);
+                Where(a => a.ProcessTime.Year == year && a.Week == week).ToDictionary(x => x.TruckID, y => y);
         }
 
         public IEnumerable<SelectListItem> GetPlateNumbers()
